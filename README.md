@@ -5,7 +5,7 @@ by Yongcheng Liu, Lu Sheng, Jing Shao*, Junjie Yan, Shiming Xiang and Chunhong P
 ![](https://github.com/Yochengliu/MLIC-KD-WSD/raw/master/images/fig3_v2.jpg)   
 
 ## Weakly Supervised Detection (WSD)   
-We use WSDDN^{[1]} as the detection model, *i.e.*, the teacher model. Because the released code of WSDDN is Matlab (using MatConvNet), we first reproduce this paper using Caffe.
+We use WSDDN ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection model, *i.e.*, the teacher model. Because the released code of WSDDN is Matlab (using MatConvNet), we first reproduce this paper using Caffe.
 
 ## Multi-Label Image Classification (MLIC)   
 The MLIC model in our framework, *i.e.*, the student model, is very compact for efficiency. It is constituted by a popular CNN model (VGG16, as the backbone model) following a fully connected layer (as the classifier).
