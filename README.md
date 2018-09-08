@@ -2,7 +2,7 @@ Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervis
 ===
 by Yongcheng Liu, Lu Sheng, Jing Shao*, Junjie Yan, Shiming Xiang and Chunhong Pan.  
 
-![](https://github.com/Yochengliu/ScasNet/raw/master/images/fig3_v2.jpg)
+![](https://github.com/Yochengliu/MLIC-KD-WSD/raw/master/images/fig3_v2.jpg)
 
 ## ScasNet
 #### VGG ScasNet
