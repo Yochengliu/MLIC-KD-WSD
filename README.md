@@ -2,7 +2,7 @@ Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervis
 ===
 by Yongcheng Liu, Lu Sheng, Jing Shao*, Junjie Yan, Shiming Xiang and Chunhong Pan.  
 
-![](https://github.com/Yochengliu/MLIC-KD-WSD/raw/master/images/fig3_v2.jpg)   
+![Example results on MS-COCO and NUS-WIDE. The green bounding boxes in images are the top-10 proposals detected by T-WDet model, which is sorted by objectness confidences s¡ä in Eq. 4. The text on the right of images are the top-3 classification results of S-Cls model ¡°without¡± and ¡°with¡± knowledge distillation using our framework, where correct predictions are shown inblue and incorrect predictions in red](https://github.com/Yochengliu/MLIC-KD-WSD/raw/master/images/fig3_v2.jpg)   
 
 ## Weakly Supervised Detection (WSD)   
 We use WSDDN ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection model, *i.e.*, the teacher model. Because the released code of WSDDN is implemented using Matlab (based on MatConvNet), we first reproduce this paper using Caffe.
