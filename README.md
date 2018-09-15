@@ -2,7 +2,11 @@ Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervis
 ===
 by Yongcheng Liu, Lu Sheng, Jing Shao*, Junjie Yan, Shiming Xiang and Chunhong Pan.  
 
-![](https://github.com/Yochengliu/MLIC-KD-WSD/raw/master/docs/images/example_results.jpg "Example results on MS-COCO and NUS-WIDE "with" and "without" knowledge distillation using our proposed framework. The texts on the right are the top-3 predictions, where correct ones are shown in blue and incorrect in red. The green bounding boxes in images are the top-10 proposals detected by the weakly-supervised detection model.")   
+[example_results]: ./docs/images/example_results.jpg
+![example_results]
+<p align = 'center'>
+    <small>Example results on MS-COCO and NUS-WIDE "with" and "without" knowledge distillation using our proposed framework. The texts on the right are the top-3 predictions, where correct ones are shown in blue and incorrect in red. The green bounding boxes in images are the top-10 proposals detected by the weakly-supervised detection model.</small>
+</p>
 
 ## Weakly Supervised Detection (WSD)   
 We use WSDDN ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection model, *i.e.*, the teacher model. Because the released code of WSDDN is implemented using Matlab (based on MatConvNet), we first reproduce this paper using Caffe.
