@@ -1,4 +1,4 @@
-[example_results]: ./images/example_results.jpg
+[example_results]: ./images/example_results.png
 ![example_results]
 <p align = 'center'>
     <small>Example results on MS-COCO and NUS-WIDE "with" and "without" knowledge distillation using our proposed framework. The texts on the right are the top-3 predictions, where correct ones are shown in blue and incorrect in red. The green bounding boxes in images are the top-10 proposals detected by the weakly-supervised detection model.</small>
