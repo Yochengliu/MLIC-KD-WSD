@@ -1,4 +1,4 @@
 theme: jekyll-theme-cayman
-title: Avatar-Net
-description: Multi-scale Zero-shot Style Transfer by Feature Decoration
+title: MLIC-KD-WSD
+description: Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection
 show_downloads: true
