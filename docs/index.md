@@ -18,7 +18,7 @@ Multi-label image classification (__MLIC__) is a fundamental but challenging tas
 
 The MLIC model might not predict well due to the lack of ___object-level feature extraction___ and ___localization for multiple semantic instances___. Although the results detected by WSD may not preserve object boundaries well, they tend to ___locate the semantic regions___ which are ___informative for classifying the target object___, such that the predictions can still be improved. Therefore, the localization results of WSD could provide ___object-relevant semantic regions___ while its image-level predictions could naturally capture ___the latent class dependencies___. These unique advantages are very useful for the MLIC task.
 
-# Method
+# Framework
 
 [framework]: ./images/framework.png
 ![framework]
@@ -28,22 +28,27 @@ The MLIC model might not predict well due to the lack of ___object-level feature
 
 In this paper, we propose a novel and efficient deep framework to boost MLIC by ___distilling the unique knowledge from WSD into classification with only image-level annotations___. Specifically, our framework works with ___two steps___: __(1)__ we first develop a WSD model with image-level annotations; __(2)__ then we construct an ___end-to-end knowledge distillation framework___ by propagating the ___class-level holistic predictions___ and ___the object-level features from RoIs___ in the WSD model to the MLIC model, where the WSD model is taken as the teacher model (called __T-WDet__) and the classification model is the student model (called __S-Cls__). The distillation of object-level features from RoIs focuses on ___perceiving localizations of semantic regions___ detected by the WSD model while the distillation of class-level holistic predictions aims at ___capturing class dependencies___ predicted by the WSD model. After this distillation, the classification model could be significantly improved and ___no longer need the WSD model___, thus resulting in ___high efficiency___ in test phase.
 
-
 # Ablation Study
 
 ### Overall ablation
+
 [overall_ab]: ./images/overall_ab.jpg
 ![overall_ab]
 
 ### Region proposal
 
+[proposal]: ./images/proposal.jpg
+![proposal]
+
 ### Robustness 
 
-[image_results]: ./figures/image_results.png
-![image_results]
-<p align = 'center'><small>Exemplar stylized results by the proposed Avatar-Net.</small></p>
+[coco]: ./images/coco.png
+![coco]
+[nus]: ./images/nus.png
+![nus]
+<p align = 'center'><small>The improvements of S-Cls model over each class/concept on MS-COCO (upper figure) and NUS-WIDE (lower figure) after knowledge distillation with our framework. "*k" indicates the number (divided by 1000) of images including this class/concept. The classes/concepts in horizontal axis are sorted by the number "*k" from large to small.</small></p>
 
-We demonstrate the state-of-the-art effectiveness and efficiency of the proposed method in generating high-quality stylized images, with a series of successful applications including multiple style integration, video stylization and etc.
+
 
 #### Comparison with Prior Arts
 
