@@ -57,11 +57,11 @@ In this paper, we propose a novel and efficient deep framework to boost MLIC by 
 - The improvements are also considerable even when the classes are very __imbalanced__ (on NUS-WIDE, the classes in which the number of images is fewer are improved even more).
 - The improvements are robust to the ___object's size___ and ___the label's type___. On MS-COCO, small objects like "bottle", "fork", "apple" and so on, which may be difficult for the classification model to pay attention, are also improved a lot. On NUS-WIDE, scenes (e.g., "rainbow"), events (e.g., "earthquake") and objects (e.g., "book") are all improved considerably.
 
-## Code
+# Code
 
 Please refer to the [GitHub repository](https://github.com/Yochengliu/MLIC-KD-WSD) for more details. 
 
-## Publication
+# Publication
 
 Yongcheng Liu, Lu Sheng, Jing Shao, Junjie Yan, Shiming Xiang and Chunhong Pan, "Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection", in ACM International Conference on Multimedia (MM), 2018. [[arxiv](https://arxiv.org/abs/1805.03857)]
 
