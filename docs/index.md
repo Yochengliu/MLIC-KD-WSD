@@ -1,17 +1,18 @@
+# [Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection](https://arxiv.org/abs/1805.03857)
+
+<p align = 'center'>   
+[Yongcheng Liu](mailto:yongcheng.liu@nlpr.ia.ac.cn), [Lu Sheng](http://www.ee.cuhk.edu.hk/~lsheng/), [Jing Shao](http://www.ee.cuhk.edu.hk/~jshao/), [Junjie Yan](http://www.cbsr.ia.ac.cn/users/jjyan/main.htm), [Shiming Xiang](http://www.escience.cn/people/smxiang), [Chunhong Pan](http://people.ucas.ac.cn/~0005314)
+</p> 
+
+<p align = 'center'>     
+[ACM Multimedia 2018](http://www.acmmm.org/2018/)
+</p> 
+
 [example_results]: ./images/example_results.png
 ![example_results]
 <p align = 'center'>
     <small>Example results on MS-COCO and NUS-WIDE "with" and "without" knowledge distillation using our proposed framework. The texts on the right are the top-3 predictions, where correct ones are shown in blue and incorrect in red. The green bounding boxes in images are the top-10 proposals detected by the weakly-supervised detection model.</small>
 </p>
-
-<p align = 'center'>
-# [Avatar-Net: Multi-scale Zero-shot Style Transfer by Feature Decoration](https://arxiv.org/abs/1805.03857)
-</p>
-
-<br>
-[Yongcheng Liu](mailto:yongcheng.liu@nlpr.ia.ac.cn), [Lu Sheng](http://www.ee.cuhk.edu.hk/~lsheng/), [Jing Shao](http://www.ee.cuhk.edu.hk/~jshao/), [Junjie Yan](http://www.cbsr.ia.ac.cn/users/jjyan/main.htm), [Shiming Xiang](http://www.escience.cn/people/smxiang), [Chunhong Pan](http://people.ucas.ac.cn/~0005314)
-<br>
-ACM Multimedia 2018
 
 ## Overview
 
