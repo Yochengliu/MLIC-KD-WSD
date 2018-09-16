@@ -23,7 +23,7 @@ The MLIC model might not predict well due to the lack of ___object-level feature
 [framework]: ./images/framework.png
 ![framework]
 <p align = 'center'>
-<small>The proposed framework works with two steps: (1) we first develop a WSD model as teacher model (called T-WDet) with only image-level annotations y; (2) then the knowledge in T-WDet is distilled into the MLIC student model (called S-Cls) via feature-level distillation from RoIs and prediction-level distillation from whole image, where the former is conducted by optimizing the loss in Eq. (3) while the latter is conducted by optimizing the losses in Eq. (5) and Eq. (10). </small>
+<small>The proposed framework works with two steps: (1) we first develop a WSD model as teacher model (called T-WDet) with only image-level annotations y; (2) then the knowledge in T-WDet is distilled into the MLIC student model (called S-Cls) via feature-level distillation from RoIs and prediction-level distillation from the whole image, where the former is conducted by optimizing the loss in Eq. (3) while the latter is conducted by optimizing the losses in Eq. (5) and Eq. (10). </small>
 </p>
 
 In this paper, we propose a novel and efficient deep framework to boost MLIC by ___distilling the unique knowledge from WSD into classification with only image-level annotations___. Specifically, our framework works with ___two steps___: __(1)__ we first develop a WSD model with image-level annotations; __(2)__ then we construct an ___end-to-end knowledge distillation framework___ by propagating the ___class-level holistic predictions___ and ___the object-level features from RoIs___ in the WSD model to the MLIC model, where the WSD model is taken as the teacher model (called __T-WDet__) and the classification model is the student model (called __S-Cls__). The distillation of object-level features from RoIs focuses on ___perceiving localizations of semantic regions___ detected by the WSD model while the distillation of class-level holistic predictions aims at ___capturing class dependencies___ predicted by the WSD model. After this distillation, the classification model could be significantly improved and ___no longer need the WSD model___, thus resulting in ___high efficiency___ in test phase.
@@ -35,10 +35,16 @@ In this paper, we propose a novel and efficient deep framework to boost MLIC by 
 [overall_ab]: ./images/overall_ab.jpg
 ![overall_ab]
 
+- The T-WDet model achieves very good performance on MS-COCO while slightly better performance on NUS-WIDE. The reason may be that the clean object labels on MS-COCO are quite suitable for detection task while the noisy concept labels are not.
+- After distillation, the MLIC model not only has global information learned by itself, but also perceives the local semantic regions as ___complementary cues___ distilled from the WSD model, thus it could surpass the latter on NUS-WIDE.
+
 ### Region proposal
 
 [proposal]: ./images/proposal.jpg
 ![proposal]
+
+- The classification performance of T-WDet is improved from 78.6 to 81.1 when using the fully-supervised detection results (__Faster-RCNN__).
+- The S-Cls model is improved to 76.3 compared with EdgeBoxes proposals to 74.6, where the gap is not obvious. This further demonstrates the effectiveness and practicability of our proposed framework.
 
 ### Robustness 
 
@@ -48,80 +54,28 @@ In this paper, we propose a novel and efficient deep framework to boost MLIC by 
 ![nus]
 <p align = 'center'><small>The improvements of S-Cls model over each class/concept on MS-COCO (upper figure) and NUS-WIDE (lower figure) after knowledge distillation with our framework. "*k" indicates the number (divided by 1000) of images including this class/concept. The classes/concepts in horizontal axis are sorted by the number "*k" from large to small.</small></p>
 
-
-
-#### Comparison with Prior Arts
-
-<p align='center'><img src="figures/closed_ups.png" width="600"></p>
-
-- The result by Avatar-Net receives concrete multi-scale style patterns (e.g. color distribution, brush strokes and circular patterns in the style image).
-- WCT distorts the brush strokes and circular patterns. AdaIN cannot even keep the color distribution, while style-swap fails in this example.
-
-#### Execution Efficiency
-
-<div style="padding-top: 20px; padding-bottom: 20px;">
-<table>
-<tbody align="center">
-<tr>
-<td>Method</td>
-<td>Gatys et. al.</td>
-<td>AdaIN</td>
-<td>WCT</td>
-<td>Style-Swap</td>
-<td>Avatar-Net</td>
-</tr>
-<tr>
-<td>256x256 (sec)</td>
-<td>12.18</td>
-<td>0.053</td>
-<td>0.62</td>
-<td>0.064</td>
-<td>0.071</td>
-</tr>
-<tr>
-<td>512x512 (sec)</td>
-<td>43.25</td>
-<td>0.11</td>
-<td>0.93</td>
-<td>0.23</td>
-<td>0.28</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-- Avatar-Net has a comparable executive time as AdaIN and GPU-accelerated Style-Swap, and is much faster than WCT and the optimization-based style transfer by Gatys _et. al._.
-- The reference methods and the proposed Avatar-Net are implemented on a same TensorFlow platform with a same VGG network as the backbone.
-
-### Applications
-#### Multi-style Interpolation
-[style_interpolation]: ./figures/style_interpolation.png
-![style_interpolation]
-
-#### Content and Style Trade-off
-[trade_off]: ./figures/trade_off.png
-![trade_off]
-
-#### Video Stylization ([the Youtube link](https://youtu.be/amaeqbw6TeA))
-
-<div style="position:relative;padding-bottom:56.25%;padding-top:25px;height:0;">
-<iframe style="position:absolute;width:100%;height:100%;" align="center" src="https://www.youtube.com/embed/amaeqbw6TeA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-</div>
+- The improvements are also considerable even when the classes are very __imbalanced__ (on NUS-WIDE, the classes in which the number of images is fewer are improved even more).
+- The improvements are robust to the ___object's size___ and ___the label's type___. On MS-COCO, small objects like "bottle", "fork", "apple" and so on, which may be difficult for the classification model to pay attention, are also improved a lot. On NUS-WIDE, scenes (e.g., "rainbow"), events (e.g., "earthquake") and objects (e.g., "book") are all improved considerably.
 
 ## Code
 
-Please refer to the [GitHub repository](https://github.com/LucasSheng/avatar-net) for more details. 
+Please refer to the [GitHub repository](https://github.com/Yochengliu/MLIC-KD-WSD) for more details. 
 
 ## Publication
 
-Lu Sheng, Ziyi Lin, Jing Shao and Xiaogang Wang, "Avatar-Net: Multi-scale Zero-shot Style Transfer by Feature Decoration", in IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2018.  [[Arxiv](https://arxiv.org/abs/1805.03857)]
+Yongcheng Liu, Lu Sheng, Jing Shao, Junjie Yan, Shiming Xiang and Chunhong Pan, "Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection", in ACM International Conference on Multimedia (MM), 2018. [[arxiv](https://arxiv.org/abs/1805.03857)]
 
 ```
-@inproceedings{sheng2018avatar,
-    Title = {Avatar-Net: Multi-scale Zero-shot Style Transfer by Feature Decoration},
-    author = {Sheng, Lu and Lin, Ziyi and Shao, Jing and Wang, Xiaogang},
-    Booktitle = {Computer Vision and Pattern Recognition (CVPR), 2018 IEEE Conference on},
-    pages={1--9},
-    year={2018}
-}
+@inproceedings{liu2018mlickdwsd,   
+      author = {Yongcheng Liu and    
+                Lu Sheng and    
+                Jing Shao and   
+                Junjie Yan and   
+                Shiming Xiang and   
+                Chunhong Pan},   
+      title = {Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection},   
+      booktitle = {ACM International Conference on Multimedia},    
+      pages = {1--9},  
+      year = {2018}   
+    }   
 ```
