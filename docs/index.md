@@ -15,7 +15,16 @@ The MLIC model might not predict well due to the lack of ___object-level feature
 [motivation]: ./images/motivation.jpg
 ![motivation]
 <p align = 'center'>
-<small>The illustration of multi-label image classification (MLIC) and weakly-supervised detection (WSD). We show top-3 predictions, in which correct predictions are shown in blueand incorrect pre-dictions inred. The MLIC model might not predict well due to poor localization for semantic instances. Although the detection results of WSD may not preserve object boundaries well, they tend to lo-cate the semantic regions which are informative for classifying the target object, such that the predictions can still be improved.</small>
+<small>The illustration of multi-label image classification (MLIC) and weakly-supervised detection (WSD). We show top-3 predictions, in which correct predictions are shown in blue and incorrect in red. The MLIC model might not predict well due to poor localization for semantic instances. Although the detection results of WSD may not preserve object boundaries well, they tend to locate the semantic regions which are informative for classifying the target object, such that the predictions can still be improved.</small>
+</p>
+
+# Method
+In this paper, we propose a novel and efficient deep framework to boost MLIC by ___distilling the unique knowledge from WSD into classification with only image-level annotations___. The overall architecture of our framework is illustrated below. Specifically, our framework works with ___two steps___: __(1)__ we first develop a WSD model with image-level annotations; __(2)__ then we construct an ___end-to-end knowledge distillation framework___ by propagating the ___class-level holistic predictions___ and ___the object-level features from RoIs___ in the WSD model to the MLIC model, where the WSD model is taken as the teacher model (called __T-WDet__) and the classification model is the student model (called __S-Cls__). The distillation of object-level features from RoIs focuses on ___perceiving localizations of semantic regions___ detected by the WSD model while the distillation of class-level holistic predictions aims at ___capturing class dependencies___ predicted by the WSD model. After this distillation, the classification model could be significantly improved and ___no longer need the WSD model___, thus resulting in ___high efficiency___ in test phase.
+
+[framework]: ./images/framework.png
+![framework]
+<p align = 'center'>
+<small>The overall architecture of our framework. The proposed framework works with two steps: (1) we first develop a WSD model as teacher model (called T-WDet) with only image-level annotations y; (2) then the knowledge in T-WDet is distilled into the MLIC student model (called S-Cls) via feature-level distillation from RoIs and prediction-level distillation from whole image, where the former is conducted by optimizing the loss in Eq. (3) while the latter is conducted by optimizing the losses in Eq. (5) and Eq. (10). </small>
 </p>
 
 ## Results
