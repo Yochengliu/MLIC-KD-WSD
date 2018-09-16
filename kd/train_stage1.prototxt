@@ -93,7 +93,7 @@ layer {
   bottom: "data"
   top: "conv_wsd_1_1"
   name: "conv_wsd_1_1"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -119,7 +119,7 @@ layer {
   bottom: "conv_wsd_1_1"
   top: "conv_wsd_1_2"
   name: "conv_wsd_1_2"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -156,7 +156,7 @@ layer {
   bottom: "pool_wsd_1"
   top: "conv_wsd_2_1"
   name: "conv_wsd_2_1"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -182,7 +182,7 @@ layer {
   bottom: "conv_wsd_2_1"
   top: "conv_wsd_2_2"
   name: "conv_wsd_2_2"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -219,7 +219,7 @@ layer {
   bottom: "pool_wsd_2"
   top: "conv_wsd_3_1"
   name: "conv_wsd_3_1"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -245,7 +245,7 @@ layer {
   bottom: "conv_wsd_3_1"
   top: "conv_wsd_3_2"
   name: "conv_wsd_3_2"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -271,7 +271,7 @@ layer {
   bottom: "conv_wsd_3_2"
   top: "conv_wsd_3_3"
   name: "conv_wsd_3_3"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -308,7 +308,7 @@ layer {
   bottom: "pool_wsd_3"
   top: "conv_wsd_4_1"
   name: "conv_wsd_4_1"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -334,7 +334,7 @@ layer {
   bottom: "conv_wsd_4_1"
   top: "conv_wsd_4_2"
   name: "conv_wsd_4_2"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -360,7 +360,7 @@ layer {
   bottom: "conv_wsd_4_2"
   top: "conv_wsd_4_3"
   name: "conv_wsd_4_3"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -398,7 +398,7 @@ layer {
   bottom: "pool_wsd_4"
   top: "conv_wsd_5_1"
   name: "conv_wsd_5_1"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -424,7 +424,7 @@ layer {
   bottom: "conv_wsd_5_1"
   top: "conv_wsd_5_2"
   name: "conv_wsd_5_2"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -450,7 +450,7 @@ layer {
   bottom: "conv_wsd_5_2"
   top: "conv_wsd_5_3"
   name: "conv_wsd_5_3"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -492,7 +492,7 @@ layer {
   bottom: "roi_pooling"
   top: "fc_wsd_6"
   name: "fc_wsd_6"
-  type: "InnerProductData"
+  type: "InnerProduct"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -532,7 +532,7 @@ layer {
   bottom: "fc_wsd_6"
   top: "fc_wsd_7"
   name: "fc_wsd_7"
-  type: "InnerProductData"
+  type: "InnerProduct"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -589,7 +589,7 @@ layer {
   bottom: "data_size224"
   top: "conv1_1"
   name: "conv1_1"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -614,7 +614,7 @@ layer {
   bottom: "conv1_1"
   top: "conv1_2"
   name: "conv1_2"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -650,7 +650,7 @@ layer {
   bottom: "pool1"
   top: "conv2_1"
   name: "conv2_1"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -675,7 +675,7 @@ layer {
   bottom: "conv2_1"
   top: "conv2_2"
   name: "conv2_2"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -711,7 +711,7 @@ layer {
   bottom: "pool2"
   top: "conv3_1"
   name: "conv3_1"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -736,7 +736,7 @@ layer {
   bottom: "conv3_1"
   top: "conv3_2"
   name: "conv3_2"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -761,7 +761,7 @@ layer {
   bottom: "conv3_2"
   top: "conv3_3"
   name: "conv3_3"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -797,7 +797,7 @@ layer {
   bottom: "pool3"
   top: "conv4_1"
   name: "conv4_1"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -822,7 +822,7 @@ layer {
   bottom: "conv4_1"
   top: "conv4_2"
   name: "conv4_2"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -847,7 +847,7 @@ layer {
   bottom: "conv4_2"
   top: "conv4_3"
   name: "conv4_3"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -883,7 +883,7 @@ layer {
   bottom: "pool4"
   top: "conv5_1"
   name: "conv5_1"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -908,7 +908,7 @@ layer {
   bottom: "conv5_1"
   top: "conv5_2"
   name: "conv5_2"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -933,7 +933,7 @@ layer {
   bottom: "conv5_2"
   top: "conv5_3"
   name: "conv5_3"
-  type: "ConvolutionData"
+  type: "Convolution"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -974,7 +974,7 @@ layer {
   bottom: "roi_pooling_224"
   top: "fc6"
   name: "fc6"
-  type: "InnerProductData"
+  type: "InnerProduct"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1013,7 +1013,7 @@ layer {
   bottom: "fc6"
   top: "fc7"
   name: "fc7"
-  type: "InnerProductData"
+  type: "InnerProduct"
   param {
     lr_mult: 1
     decay_mult: 1
@@ -1051,7 +1051,7 @@ layer {
 
 layer {
   name: "loss_euclid"
-  type: "EuclideanLossData"
+  type: "EuclideanLoss"
   bottom: "fc_wsd_7"
   bottom: "fc7"
   top: "loss_euclid"

@@ -14,8 +14,8 @@ We use WSDDN ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection mo
 ## Multi-Label Image Classification (MLIC)   
 The MLIC model in our framework, *i.e.*, the student model, is very compact for efficiency. It is constituted by a popular CNN model (VGG16, as the backbone model) following a fully connected layer (as the classifier).
 
-## Caffe Framework 
-The Caffe framework for our implementation is based on the Caffe version in [PSPNet](https://github.com/hszhao/PSPNet).      
+## Caffe 
+The Caffe for our implementation is based on the Caffe version in [PSPNet](https://github.com/hszhao/PSPNet).      
 #### Installation
 Please follow the instructions of [Caffe](https://github.com/BVLC/caffe) and [PSPNet](https://github.com/hszhao/PSPNet).  
 The code has been tested successfully on Ubuntu 14.04 with CUDA 8.0.    

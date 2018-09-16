@@ -1,26 +1,83 @@
-name: "ResNext18"
+name: "VGG16_wsddn"
 
-input: "imagedata"
-input_dim: 1
-input_dim: 3
-input_dim: 672
-input_dim: 672
+layer{
+  name: "data"
+  type: "HumanAttData"
+  top: "data"
+  top: "label_roi"
+  include {
+    phase: TRAIN
+  }
+  transform_param {
+    mirror: true
+    mean_value: 103.52
+    mean_value: 116.28
+    mean_value: 123.675
+  }
+  human_att_data_param {
+    source: "train_672_mscoco_withebscore.txt"
+    root_folder: ""
+    batch_size: 32
+    shuffle: true
+    new_width: 672
+    new_height: 672
+    scale_factors: 0.714286  # 480  30
+    scale_factors: 0.857143  # 576  36
+    scale_factors: 1         # 672  42
+    scale_factors: 1.095239  # 736  46  
+    scale_factors: 1.238096  # 832  52
+    att_num: 80
+    bbox_num: 500
+  }
+}
 
-input: "proposaldata"
-input_dim: 1
-input_dim: 2500
-input_dim: 1
-input_dim: 1
+layer{
+  name: "data"
+  type: "HumanAttData"
+  top: "data"
+  top: "label_roi"
+  include {
+    phase: TEST
+  }
+  transform_param {
+    mirror: false
+    mean_value: 103.52
+    mean_value: 116.28
+    mean_value: 123.675
+  }
+  human_att_data_param {
+    source: "test_672_mscoco_withebscore.txt"
+    root_folder: ""
+    batch_size: 16
+    shuffle: false
+    new_width: 672
+    new_height: 672
+    att_num: 80
+    bbox_num: 500
+  }
+}
+
+layer {
+  name: "slice_label_roi"
+  bottom: "label_roi"
+  type: "Slice"
+  top: "labels"
+  top: "list_roi"
+  slice_param {
+    axis: 1
+    slice_point: 80
+  }
+}
 
 layer {
   name: "roi"
-  bottom: "proposaldata"
+  bottom: "list_roi"
   top: "roi"
   type: "WsdRoigen"
 }
 
 layer {
-  bottom: "imagedata"
+  bottom: "data"
   top: "conv1_1"
   name: "conv1_1"
   type: "Convolution"
@@ -617,3 +674,26 @@ layer {
     bias_term: false
   }
 }    
+
+layer {
+  name: "loss"
+  type: "CrossEntropyLoss"
+  bottom: "image_level_score"
+  bottom: "labels"
+  top: "loss"
+  loss_weight: 1
+}
+
+layer {
+  name: "mAP"
+  type: "MAP"
+  bottom: "image_level_score"
+  bottom: "labels"
+  top: "mAP"
+  include {
+    phase: TEST
+  }
+  map_param {
+    num_iter: 2509
+  }
+}
