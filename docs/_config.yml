@@ -1,3 +1,4 @@
 theme: jekyll-theme-cayman
 title: MLIC-KD-WSD
+description: Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection
 show_downloads: true
