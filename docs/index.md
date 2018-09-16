@@ -1,12 +1,6 @@
-## [Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection](https://arxiv.org/abs/1805.03857)
+[Yongcheng Liu](mailto:yongcheng.liu@nlpr.ia.ac.cn), [Lu Sheng](http://www.ee.cuhk.edu.hk/~lsheng/), [Jing Shao](http://www.ee.cuhk.edu.hk/~jshao/), [Junjie Yan](http://www.cbsr.ia.ac.cn/users/jjyan/main.htm), [Shiming Xiang](http://www.escience.cn/people/smxiang), [Chunhong Pan](http://people.ucas.ac.cn/~0005314)  
 
-<p align = "center">   
-[Yongcheng Liu](mailto:yongcheng.liu@nlpr.ia.ac.cn), [Lu Sheng](http://www.ee.cuhk.edu.hk/~lsheng/), [Jing Shao](http://www.ee.cuhk.edu.hk/~jshao/), [Junjie Yan](http://www.cbsr.ia.ac.cn/users/jjyan/main.htm), [Shiming Xiang](http://www.escience.cn/people/smxiang), [Chunhong Pan](http://people.ucas.ac.cn/~0005314)
-</p>   
-
-<p align = "center">     
 [ACM Multimedia 2018](http://www.acmmm.org/2018/)
-</p>   
 
 [example_results]: ./images/example_results.png
 ![example_results]
