@@ -2,6 +2,8 @@ Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervis
 ===
 by Yongcheng Liu, Lu Sheng, Jing Shao*, Junjie Yan, Shiming Xiang and Chunhong Pan.  
 
+[__Yongcheng Liu__](mailto:yongcheng.liu@nlpr.ia.ac.cn), [__Lu Sheng__](http://www.ee.cuhk.edu.hk/~lsheng/), [__Jing Shao__](http://www.ee.cuhk.edu.hk/~jshao/), [__Junjie Yan__](http://www.cbsr.ia.ac.cn/users/jjyan/main.htm), [__Shiming Xiang__](http://www.escience.cn/people/smxiang), [__Chunhong Pan__](http://people.ucas.ac.cn/~0005314)  
+
 [example_results]: ./docs/images/example_results.png
 ![example_results]
 <p align = 'center'>

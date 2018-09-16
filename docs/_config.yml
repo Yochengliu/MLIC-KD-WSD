@@ -1,4 +1,5 @@
 theme: jekyll-theme-cayman
-title: Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection
-description: ACM Multimedia 2018
+title: Multi-Label Image Classification via Knowledge Distillation 
+from Weakly-Supervised Detection
+description: Yongcheng Liu, Lu Sheng, Jing Shao, Junjie Yan, Shiming Xiang, Chunhong Pan
 show_downloads: true
