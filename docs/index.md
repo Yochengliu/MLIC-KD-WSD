@@ -5,7 +5,7 @@
 </p>
 
 <p align = 'center'>
-[__Avatar-Net: Multi-scale Zero-shot Style Transfer by Feature Decoration__](https://arxiv.org/abs/1805.03857)
+# [Avatar-Net: Multi-scale Zero-shot Style Transfer by Feature Decoration](https://arxiv.org/abs/1805.03857)
 </p>
 
 <br>
