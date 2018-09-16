@@ -1,28 +1,19 @@
 [example_results]: ./images/example_results.png
 ![example_results]
 <p align = 'center'>
-    <small>Example results on MS-COCO and NUS-WIDE "with" and "without" knowledge distillation using our proposed framework. The texts on the right are the top-3 predictions, where correct ones are shown in blue and incorrect in red. The green bounding boxes in images are the top-10 proposals detected by the weakly-supervised detection model.</small>
+    <small>Example results on MS-COCO and NUS-WIDE __"with"__ and __"without"__ knowledge distillation using our proposed framework. The texts on the right are the top-3 predictions, where correct ones are shown in blue and incorrect in red. The green bounding boxes in images are the top-10 proposals detected by the weakly-supervised detection model.</small>
 </p>
 
 # Abstract   
 
-Multi-label image classification is a fundamental but challenging task towards general visual understanding. Existing methods found the region-level cues (e.g., features from RoIs) can facilitate multi-label classification. Nevertheless, such methods usually require laborious object-level annotations (i.e., object labels and bounding boxes) for effective learning of the object-level visual features. In this paper, we propose a novel and efficient deep framework to boost multi-label classification by distilling knowledge from weakly-supervised detection task without bounding box annotations. Specifically, given the image-level annotations, (1) we first develop a weakly-supervised detection (WSD) model, and then (2) construct an end-to-end multi-label image classification framework augmented by a knowledge distillation module that guides the classification model by the WSD model according to the class-level predictions for the whole image and the object-level visual features for object RoIs. The WSD model is the _teacher_ model and the classification model is the _student_ model. After this cross-task knowledge distillation, the performance of the classification model is significantly improved and the efficiency is maintained since the WSD model can be safely discarded in the test phase. Extensive experiments on two large-scale datasets (MS-COCO and NUS-WIDE) show that our framework achieves superior performances over the state-of-the-art methods on both performance and efficiency.
+Multi-label image classification is a fundamental but challenging task towards general visual understanding. Existing methods found the region-level cues (e.g., features from RoIs) can facilitate multi-label classification. Nevertheless, such methods usually require laborious object-level annotations (i.e., object labels and bounding boxes) for effective learning of the object-level visual features. In this paper, we propose a novel and efficient deep framework to boost multi-label classification by distilling knowledge from weakly-supervised detection task ___without bounding box annotations___. Specifically, given the image-level annotations, (1) we first develop a weakly-supervised detection (WSD) model, and then (2) construct an end-to-end multi-label image classification framework augmented by a knowledge distillation module that guides the classification model by the WSD model according to the class-level predictions for the whole image and the object-level visual features for object RoIs. The WSD model is the ___teacher___ model and the classification model is the ___student___ model. After this ___cross-task knowledge distillation___, the performance of the classification model is significantly improved and the efficiency is maintained since the WSD model can be safely discarded in the test phase. Extensive experiments on two large-scale datasets (MS-COCO and NUS-WIDE) show that our framework achieves superior performances over the state-of-the-art methods on both performance and efficiency.
 
+# Motivation
 
-The key ingredient of our method is a __style decorator__ that makes up the content features by semantically aligned style features from an arbitrary style image, which does not only holistically match their feature distributions but also preserve detailed style patterns in the decorated features.
-
-[style_decorator]: ./figures/style_decorator.png
-![style_decorator]
+[motivation]: ./images/motivation.jpg
+![motivation]
 <p align = 'center'>
-<small>Comparison of feature distribution transformation by different feature transfer modules. (a) <a href="https://arxiv.org/abs/1703.06868">Adaptive Instance Normalization</a>, (b) <a href="https://arxiv.org/abs/1705.08086">Whitening and Coloring Transform</a>, (c) <a href="https://arxiv.org/abs/1612.04337">Style-Swap</a>, and (d) the proposed style decorator.</small>
-</p>
-
-By embedding this module into a reconstruction network that fuses multi-scale style abstractions, the Avatar-Net renders multi-scale stylization for any style image in one feed-forward pass. 
-
-[network]: ./figures/network_architecture_with_comparison.png
-![network]
-<p align = 'center'>
-<small>(a) Stylization comparison by autoencoder and style-augmented hourglass network. (b) The network architecture of the proposed method.</small>
+<small>The illustration of multi-label image classification (MLIC) and weakly-supervised detection (WSD). We show top-3 predictions, in which correct predictions are shown in blueand incorrect pre-dictions inred. The MLIC model might not predict well due to poor localization for semantic instances. Although the detection results of WSD may not preserve object boundaries well, they tend to lo-cate the semantic regions which are informative for classifying the target object, such that the predictions can still be improved.</small>
 </p>
 
 ## Results
