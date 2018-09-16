@@ -26,11 +26,11 @@ The MLIC model might not predict well due to the lack of ___object-level feature
 <small>The proposed framework works with two steps: (1) we first develop a WSD model as teacher model (called T-WDet) with only image-level annotations y; (2) then the knowledge in T-WDet is distilled into the MLIC student model (called S-Cls) via feature-level distillation from RoIs and prediction-level distillation from the whole image, where the former is conducted by optimizing the loss in Eq. (3) while the latter is conducted by optimizing the losses in Eq. (5) and Eq. (10). </small>
 </p>
 
-In this paper, we propose a novel and efficient deep framework to boost MLIC by ___distilling the unique knowledge from WSD into classification with only image-level annotations___. Specifically, our framework works with ___two steps___: __(1)__ we first develop a WSD model with image-level annotations; __(2)__ then we construct an ___end-to-end knowledge distillation framework___ by propagating the ___class-level holistic predictions___ and ___the object-level features from RoIs___ in the WSD model to the MLIC model, where the WSD model is taken as the teacher model (called __T-WDet__) and the classification model is the student model (called __S-Cls__). The distillation of object-level features from RoIs focuses on ___perceiving localizations of semantic regions___ detected by the WSD model while the distillation of class-level holistic predictions aims at ___capturing class dependencies___ predicted by the WSD model. After this distillation, the classification model could be significantly improved and ___no longer need the WSD model___, thus resulting in ___high efficiency___ in test phase.
+In this paper, we propose a novel and efficient deep framework to boost MLIC by ___distilling the unique knowledge from WSD into classification with only image-level annotations___. Specifically, our framework works with ___two steps___: __(1)__ we first develop a WSD model with image-level annotations; __(2)__ then we construct an ___end-to-end knowledge distillation framework___ by propagating the ___class-level holistic predictions___ and ___the object-level features from RoIs___ in the WSD model to the MLIC model, where the WSD model is taken as the teacher model (called __T-WDet__) and the classification model is the student model (called __S-Cls__). The distillation of object-level features from RoIs focuses on ___perceiving localizations of semantic regions___ detected by the WSD model while the distillation of class-level holistic predictions aims at ___capturing class dependencies___ predicted by the WSD model. After this distillation, the classification model could be significantly improved and ___no longer need the WSD model___, thus resulting in ___high efficiency___ in test phase. More details can be referred in the paper.
 
 # Ablation Study
 
-### Overall ablation
+### Overall Ablation
 
 [overall_ab]: ./images/overall_ab.jpg
 ![overall_ab]
@@ -38,7 +38,7 @@ In this paper, we propose a novel and efficient deep framework to boost MLIC by 
 - The T-WDet model achieves very good performance on MS-COCO while slightly better performance on NUS-WIDE. The reason may be that the clean object labels on MS-COCO are quite suitable for detection task while the noisy concept labels are not.
 - After distillation, the MLIC model not only has global information learned by itself, but also perceives the local semantic regions as ___complementary cues___ distilled from the WSD model, thus it could surpass the latter on NUS-WIDE.
 
-### Region proposal
+### Region Proposal
 
 [proposal]: ./images/proposal.jpg
 ![proposal]
@@ -63,19 +63,19 @@ Please refer to the [GitHub repository](https://github.com/Yochengliu/MLIC-KD-WS
 
 # Publication
 
-Yongcheng Liu, Lu Sheng, Jing Shao, Junjie Yan, Shiming Xiang and Chunhong Pan, "Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection", in ACM International Conference on Multimedia (MM), 2018. [[arxiv](https://arxiv.org/abs/1805.03857)]
+Yongcheng Liu, Lu Sheng, Jing Shao, Junjie Yan, Shiming Xiang and Chunhong Pan, "Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection", in ACM International Conference on Multimedia (MM), 2018. [[arXiv](https://arxiv.org/abs/1805.03857)]
 
 ```
 @inproceedings{liu2018mlickdwsd,   
-      author = {Yongcheng Liu and    
-                Lu Sheng and    
-                Jing Shao and   
-                Junjie Yan and   
-                Shiming Xiang and   
-                Chunhong Pan},   
-      title = {Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection},   
-      booktitle = {ACM International Conference on Multimedia},    
-      pages = {1--9},  
-      year = {2018}   
-    }   
+  author = {Yongcheng Liu and    
+            Lu Sheng and    
+            Jing Shao and   
+            Junjie Yan and   
+            Shiming Xiang and   
+            Chunhong Pan},   
+  title = {Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection},   
+  booktitle = {ACM International Conference on Multimedia},    
+  pages = {1--9},  
+  year = {2018}   
+}   
 ```
