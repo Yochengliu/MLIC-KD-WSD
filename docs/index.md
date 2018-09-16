@@ -1,4 +1,4 @@
-[Yongcheng Liu](mailto:yongcheng.liu@nlpr.ia.ac.cn), [Lu Sheng](http://www.ee.cuhk.edu.hk/~lsheng/), [Jing Shao](http://www.ee.cuhk.edu.hk/~jshao/), [Junjie Yan](http://www.cbsr.ia.ac.cn/users/jjyan/main.htm), [Shiming Xiang](http://www.escience.cn/people/smxiang), [Chunhong Pan](http://people.ucas.ac.cn/~0005314)  
+[__Yongcheng Liu__](mailto:yongcheng.liu@nlpr.ia.ac.cn), [__Lu Sheng__](http://www.ee.cuhk.edu.hk/~lsheng/), [__Jing Shao__](http://www.ee.cuhk.edu.hk/~jshao/), [__Junjie Yan__](http://www.cbsr.ia.ac.cn/users/jjyan/main.htm), [__Shiming Xiang__](http://www.escience.cn/people/smxiang), [__Chunhong Pan__](http://people.ucas.ac.cn/~0005314)  
 
 [ACM Multimedia 2018](http://www.acmmm.org/2018/)
 
