@@ -8,6 +8,8 @@ This repository contains the code (in [Caffe](https://github.com/BVLC/caffe)) fo
 <br>
 [_ACM Multimedia 2018_](http://www.acmmm.org/2018/)
 
+Project Page: [https://yochengliu.github.io/MLIC-KD-WSD/](https://yochengliu.github.io/MLIC-KD-WSD/)
+
 ## Weakly Supervised Detection (WSD)   
 We use WSDDN ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection model, *i.e.*, the teacher model. Because the released code of WSDDN is implemented using Matlab (based on MatConvNet), we first reproduce this paper using Caffe.
 
