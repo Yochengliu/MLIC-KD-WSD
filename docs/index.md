@@ -34,9 +34,9 @@ Multi-label image classification (__MLIC__) is a fundamental but challenging tas
 
 In this paper, we propose a novel and efficient deep framework to boost MLIC by ___distilling the unique knowledge from WSD into classification with only image-level annotations___. Specifically, our framework works with ___two steps___:
 
-- __(1)__ we first develop a WSD model with image-level annotations; 
+- We first develop a WSD model with image-level annotations; 
 
-- __(2)__ then we construct an ___end-to-end knowledge distillation framework___ by propagating the ___class-level holistic predictions___ and ___the object-level features from RoIs___ in the WSD model to the MLIC model, where the WSD model is taken as the teacher model (called __T-WDet__) and the classification model is the student model (called __S-Cls__).
+- Then we construct an ___end-to-end knowledge distillation framework___ by propagating the ___class-level holistic predictions___ and ___the object-level features from RoIs___ in the WSD model to the MLIC model, where the WSD model is taken as the teacher model (called __T-WDet__) and the classification model is the student model (called __S-Cls__).
 
 - The distillation of object-level features from RoIs focuses on ___perceiving localizations of semantic regions___ detected by the WSD model while the distillation of class-level holistic predictions aims at ___capturing class dependencies___ predicted by the WSD model.-
 
