@@ -12,7 +12,9 @@ __Project Page__: [https://yochengliu.github.io/MLIC-KD-WSD/](https://yochengliu
 
 ## Weakly Supervised Detection (WSD)
  
-We use [WSDDN](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Bilen_Weakly_Supervised_Deep_CVPR_2016_paper.pdf) ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection model, *i.e.*, the teacher model. Because the [released code](https://github.com/hbilen/WSDDN) of WSDDN is implemented using Matlab (based on [MatConvNet](http://www.vlfeat.org/matconvnet/)), we first reproduce this paper using Caffe.
+- We use [WSDDN](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Bilen_Weakly_Supervised_Deep_CVPR_2016_paper.pdf) ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection model, *i.e.*, the teacher model. 
+
+- Because the [released code](https://github.com/hbilen/WSDDN) of WSDDN is implemented using Matlab (based on [MatConvNet](http://www.vlfeat.org/matconvnet/)), we first reproduce this paper using Caffe.
 
 [1]. Hakan Bilen, Andrea Vedaldi, "Weakly Supervised Deep Detection Networks". In: IEEE Computer Vision and Pattern Recognition, 2016.
 
@@ -24,13 +26,17 @@ We use [WSDDN](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers
 
         ./wsddn/wsddn_train(deploy).prototxt
     
-- Backbone model is [VGG16](http://www.robots.ox.ac.uk/~vgg/research/very_deep/).
+- [VGG16](http://www.robots.ox.ac.uk/~vgg/research/very_deep/) is used as the backbone model.
 - For training, we did not use spatial regularizer. More details can be referred in the paper.
 - For testing, you can use Pycaffe or Matcaffe.
 
 ## Multi-Label Image Classification (MLIC)
    
-The MLIC model in our framework, *i.e.*, the student model, is very compact for efficiency. It is constituted by a popular CNN model ([VGG16](http://www.robots.ox.ac.uk/~vgg/research/very_deep/), as the backbone model) following a fully connected layer (as the classifier). Actually, the backbone model of the student could be different from the teacher's.
+- The MLIC model in our framework, *i.e.*, the student model, is very compact for efficiency.
+
+- It is constituted by a popular CNN model ([VGG16](http://www.robots.ox.ac.uk/~vgg/research/very_deep/), as the backbone model) following a fully connected layer (as the classifier).
+
+- The backbone model of the student could be different from the teacher's.
 
 ## Cross-Task Knowledge Distillation
 
@@ -50,7 +56,7 @@ More details can be referred in our paper.
 
 Please follow the instruction of [Caffe](https://github.com/BVLC/caffe).
 
-#### Our Implementation
+#### Implementation
         ./caffe
             include
                 ...
