@@ -19,7 +19,7 @@ We use [WSDDN](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers
     image_path one_hot_label_vector(e.g., 0 1 1 ...) proposal_info(e.g., x_min y_min x_max y_max score x_min y_min x_max y_max score ...)
 
 #### Training & Test
-                    ./wsddn/wsddn_train(deploy).prototxt
+        ./wsddn/wsddn_train(deploy).prototxt
     
 - For training, we did not use spatial regularizer. More details can be referred in the paper.
 - For testing, you can use Pycaffe or Matcaffe.
@@ -30,9 +30,9 @@ The MLIC model in our framework, *i.e.*, the student model, is very compact for 
 ## Cross-Task Knowledge Distillation
 
 #### Stage 1: Feature-Level Knowledge Transfer
-                    ./kd/train_stage1.prototxt
+        ./kd/train_stage1.prototxt
 #### Stage 2: Prediction-Level Knowledge Transfer
-                    ./kd/train_stage2.prototxt
+        ./kd/train_stage2.prototxt
 
 More details can be referred in our paper.
 
@@ -62,7 +62,7 @@ __Note__: You shoud add the above codes to Caffe and compile them successfully.
 The code has been tested successfully on Ubuntu 14.04 with CUDA 8.0.    
 
 ## Citation
-If our paper is helpful for your research, please consider citing:   
+If our paper [[arXiv]()] is helpful for your research, please consider citing:   
 
     @inproceedings{liu2018mlickdwsd,   
       author = {Yongcheng Liu and    
