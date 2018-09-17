@@ -1,4 +1,4 @@
-name: "ResNext18"
+name: "vgg16_wsddn"
 
 input: "imagedata"
 input_dim: 1
