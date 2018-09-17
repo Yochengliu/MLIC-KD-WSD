@@ -11,7 +11,7 @@ This repository contains the code (in [Caffe](https://github.com/BVLC/caffe)) fo
 __Project Page__: [https://yochengliu.github.io/MLIC-KD-WSD/](https://yochengliu.github.io/MLIC-KD-WSD/)
 
 ## Weakly Supervised Detection (WSD)   
-We use WSDDN ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection model, *i.e.*, the teacher model. Because the released code of WSDDN is implemented using Matlab (based on MatConvNet), we first reproduce this paper using Caffe.
+We use [WSDDN](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Bilen_Weakly_Supervised_Deep_CVPR_2016_paper.pdf) ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection model, *i.e.*, the teacher model. Because the released code of WSDDN is implemented using Matlab (based on MatConvNet), we first reproduce this paper using Caffe.
 
 [1]. Hakan Bilen, Andrea Vedaldi, "Weakly Supervised Deep Detection Networks". In: IEEE Computer Vision and Pattern Recognition, 2016.
 
@@ -19,9 +19,10 @@ We use WSDDN ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection mo
     image_path one_hot_label_vector(e.g., 0 1 1 ...) proposal_info(e.g., x_min y_min x_max y_max score x_min y_min x_max y_max score ...)
 
 #### Training & Test
-    ./wsddn/wsddn_train(deploy).prototxt
-
-For testing WSDDN, you can use Pycaffe or Matcaffe.
+                    ./wsddn/wsddn_train(deploy).prototxt
+    
+- For training, we did not use spatial regularizer. More details can be referred in the paper.
+- For testing, you can use Pycaffe or Matcaffe.
 
 ## Multi-Label Image Classification (MLIC)   
 The MLIC model in our framework, *i.e.*, the student model, is very compact for efficiency. It is constituted by a popular CNN model (VGG16, as the backbone model) following a fully connected layer (as the classifier). Actually, the backbone model of the student could be different from the teacher's.
@@ -29,36 +30,36 @@ The MLIC model in our framework, *i.e.*, the student model, is very compact for 
 ## Cross-Task Knowledge Distillation
 
 #### Stage 1: Feature-Level Knowledge Transfer
-    ./kd/train_stage1.prototxt
+                    ./kd/train_stage1.prototxt
 #### Stage 2: Prediction-Level Knowledge Transfer
-    ./kd/train_stage2.prototxt
+                    ./kd/train_stage2.prototxt
+
+More details can be referred in our paper.
 
 ## Caffe     
 #### Installation
 Please follow the instruction of [Caffe](https://github.com/BVLC/caffe).  
 
 #### Our Implementation
-    ./caffe
-        include
-            ...
-        src
-            caffe
-                utils
-                    interp.cpp/cu  // bilinear interpolation
-                cross_entropy_loss_layer.cpp  // cross entropy loss for WSDDN
-                data_transformer.cpp  // data augmentation
-                human_att_data_layer.cpp  // data layer
-                roi_pooling_layer.cpp/cu  // add score
-                wsd_roigen_layer.cpp  // prepare rois for roi pooling
-                wsd_roigen_single_scale_layer.cpp  // convert rois' coordinates according to the given scale
-            proto
-                caffe.proto  // add some LayerParameters 
+        ./caffe
+            include
+                ...
+            src
+                caffe
+                    utils
+                        interp.cpp/cu                   // bilinear interpolation
+                    cross_entropy_loss_layer.cpp        // cross entropy loss for WSDDN
+                    data_transformer.cpp                // data augmentation
+                    human_att_data_layer.cpp            // data layer
+                    roi_pooling_layer.cpp/cu            // add score
+                    wsd_roigen_layer.cpp                // prepare rois for roi pooling
+                    wsd_roigen_single_scale_layer.cpp   // convert rois' coordinates according to the given scale
+                proto
+                    caffe.proto                         // add some LayerParameters 
 
-__Note__: You shoud add the above codes to Caffe and compile them successfully      
+__Note__: You shoud add the above codes to Caffe and compile them successfully.
+
 The code has been tested successfully on Ubuntu 14.04 with CUDA 8.0.    
-
-## References
-
 
 ## Citation
 If our paper is helpful for your research, please consider citing:   
