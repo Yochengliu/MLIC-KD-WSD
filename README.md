@@ -10,18 +10,14 @@ This repository contains the code (in [Caffe](https://github.com/BVLC/caffe)) fo
 
 ## Weakly Supervised Detection (WSD)   
 We use WSDDN ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection model, *i.e.*, the teacher model. Because the released code of WSDDN is implemented using Matlab (based on MatConvNet), we first reproduce this paper using Caffe.
-<br>
-[1]. Hakan Bilen, Andrea Vedaldi, 2016. Weakly Supervised Deep Detection Networks. In: IEEE Computer Vision and Pattern Recognition.   
+
+[1]. Hakan Bilen, Andrea Vedaldi, "Weakly Supervised Deep Detection Networks". In: IEEE Computer Vision and Pattern Recognition, 2016.
 
 ### Datalist Preparation
-'''
-image_path one_hot_label_vector(e.g., 0 1 1 ...) proposal_info(e.g., x_min y_min x_max y_max score x_min y_min x_max y_max score ...)
-'''
+    image_path one_hot_label_vector(e.g., 0 1 1 ...) proposal_info(e.g., x_min y_min x_max y_max score x_min y_min x_max y_max score ...)
 
 ### Training & Test
-'''
-./wsddn/wsddn_train(deploy).prototxt
-'''
+    ./wsddn/wsddn_train(deploy).prototxt
 For WSDDN test, you can use Pycaffe or Matcaffe.
 
 ## Multi-Label Image Classification (MLIC)   
