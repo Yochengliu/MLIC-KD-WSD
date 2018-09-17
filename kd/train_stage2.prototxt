@@ -63,16 +63,6 @@ layer {
   }
 }
 
-layer {
-  name: "label_gather"
-  type: "Gather"
-  bottom: "label"
-  top: "label_gather"
-  include {
-    phase: TEST
-  }
-}
-
 ################  wsddn  ######################
 
 layer {
@@ -1243,16 +1233,6 @@ layer {
 }
 
 layer {
-  name: "fc8_mscoco_gather"
-  type: "Gather"
-  bottom: "fc8_mscoco"
-  top: "fc8_mscoco_gather"
-  include {
-    phase: TEST
-  }
-}
-
-layer {
   name: "fc8_mscoco_soft"
   bottom: "fc8_mscoco"
   type: "Scale"
@@ -1290,29 +1270,5 @@ layer {
   propagate_down: 0
   top: "loss_sig"
   loss_weight: 1
-}
-
-layer {
-  name: "score"
-  type: "Sigmoid"
-  bottom: "fc8_mscoco_gather"
-  top: "score"
-  include {
-    phase: TEST
-  }
-}
-
-layer {
-  name: "mAP"
-  type: "MAP"
-  bottom: "score"
-  bottom: "label_gather"
-  top: "mAP"
-  include {
-    phase: TEST
-  }
-  map_param {
-    num_iter: 10035
-  }
 }
 

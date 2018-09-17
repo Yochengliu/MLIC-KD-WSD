@@ -683,17 +683,3 @@ layer {
   top: "loss"
   loss_weight: 1
 }
-
-layer {
-  name: "mAP"
-  type: "MAP"
-  bottom: "image_level_score"
-  bottom: "labels"
-  top: "mAP"
-  include {
-    phase: TEST
-  }
-  map_param {
-    num_iter: 2509
-  }
-}

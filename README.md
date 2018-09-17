@@ -15,25 +15,46 @@ We use WSDDN ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection mo
 
 [1]. Hakan Bilen, Andrea Vedaldi, "Weakly Supervised Deep Detection Networks". In: IEEE Computer Vision and Pattern Recognition, 2016.
 
-### Datalist Preparation
-   
-    image_path one_hot_label_vector(*e.g.*, 0 1 1 ...) proposal_info(*e.g.*, x_min y_min x_max y_max score x_min y_min x_max y_max score ...)
+#### Datalist Preparation
+    image_path one_hot_label_vector(e.g., 0 1 1 ...) proposal_info(e.g., x_min y_min x_max y_max score x_min y_min x_max y_max score ...)
 
-### Training & Test
-   
+#### Training & Test
     ./wsddn/wsddn_train(deploy).prototxt
 
 For testing WSDDN, you can use Pycaffe or Matcaffe.
 
 ## Multi-Label Image Classification (MLIC)   
-The MLIC model in our framework, *i.e.*, the student model, is very compact for efficiency. It is constituted by a popular CNN model (VGG16, as the backbone model) following a fully connected layer (as the classifier).
+The MLIC model in our framework, *i.e.*, the student model, is very compact for efficiency. It is constituted by a popular CNN model (VGG16, as the backbone model) following a fully connected layer (as the classifier). Actually, the backbone model of the student could be different from the teacher's.
 
+## Cross-Task Knowledge Distillation
 
+#### Stage 1: Feature-Level Knowledge Transfer
+    ./kd/train_stage1.prototxt
+#### Stage 2: Prediction-Level Knowledge Transfer
+    ./kd/train_stage2.prototxt
 
-## Caffe 
-The Caffe for our implementation is based on the Caffe version in [PSPNet](https://github.com/hszhao/PSPNet).      
+## Caffe     
 #### Installation
-Please follow the instructions of [Caffe](https://github.com/BVLC/caffe) and [PSPNet](https://github.com/hszhao/PSPNet).  
+Please follow the instruction of [Caffe](https://github.com/BVLC/caffe).  
+
+#### Our Implementation
+    ./caffe
+        include
+            ...
+        src
+            caffe
+                utils
+                    interp.cpp/cu  // bilinear interpolation
+                cross_entropy_loss_layer.cpp  // cross entropy loss for WSDDN
+                data_transformer.cpp  // data augmentation
+                human_att_data_layer.cpp  // data layer
+                roi_pooling_layer.cpp/cu  // add score
+                wsd_roigen_layer.cpp  // prepare rois for roi pooling
+                wsd_roigen_single_scale_layer.cpp  // convert rois' coordinates according to the given scale
+            proto
+                caffe.proto  // add some LayerParameters 
+
+__Note__: You shoud add the above codes to Caffe and compile them successfully      
 The code has been tested successfully on Ubuntu 14.04 with CUDA 8.0.    
 
 ## References
