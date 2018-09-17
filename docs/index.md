@@ -38,7 +38,7 @@ Specifically, our framework works with ___two steps___:
 - (2) then we construct an ___end-to-end knowledge distillation framework___ by propagating the ___class-level holistic predictions___ and ___the object-level features from RoIs___ in the WSD model to the MLIC model, where the WSD model is taken as the teacher model (called __T-WDet__) and the classification model is the student model (called __S-Cls__).
 
 
-- The distillation of object-level features from RoIs focuses on ___perceiving localizations of semantic regions___ detected by the WSD model while the distillation of class-level holistic predictions aims at ___capturing class dependencies___ predicted by the WSD model.-
+- The distillation of object-level features from RoIs focuses on ___perceiving localizations of semantic regions___ detected by the WSD model while the distillation of class-level holistic predictions aims at ___capturing class dependencies___ predicted by the WSD model.
 
 - After this distillation, the classification model could be significantly improved and ___no longer need the WSD model___, thus resulting in ___high efficiency___ in test phase. More details can be referred in the paper.
 
