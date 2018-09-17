@@ -15,15 +15,15 @@ We use WSDDN ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection mo
 
 [1]. Hakan Bilen, Andrea Vedaldi, "Weakly Supervised Deep Detection Networks". In: IEEE Computer Vision and Pattern Recognition, 2016.
 
-- Datalist Preparation
+### Datalist Preparation
    
-    image_path one_hot_label_vector(e.g., 0 1 1 ...) proposal_info(e.g., x_min y_min x_max y_max score x_min y_min x_max y_max score ...)
+    image_path one_hot_label_vector(*e.g.*, 0 1 1 ...) proposal_info(*e.g.*, x_min y_min x_max y_max score x_min y_min x_max y_max score ...)
 
-- Training & Test
+### Training & Test
    
     ./wsddn/wsddn_train(deploy).prototxt
 
-For WSDDN test, you can use Pycaffe or Matcaffe.
+For testing WSDDN, you can use Pycaffe or Matcaffe.
 
 ## Multi-Label Image Classification (MLIC)   
 The MLIC model in our framework, *i.e.*, the student model, is very compact for efficiency. It is constituted by a popular CNN model (VGG16, as the backbone model) following a fully connected layer (as the classifier).
