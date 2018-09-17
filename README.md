@@ -1,12 +1,12 @@
 Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection    
 ===
-
 This repository contains the code (in [Caffe](https://github.com/BVLC/caffe)) for the paper:    
-<br>
+
 [__Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection__]()   
 <br>  
 [Yongcheng Liu](mailto:yongcheng.liu@nlpr.ia.ac.cn), [Lu Sheng](http://www.ee.cuhk.edu.hk/~lsheng/), [Jing Shao*](http://www.ee.cuhk.edu.hk/~jshao/), [Junjie Yan](http://www.cbsr.ia.ac.cn/users/jjyan/main.htm), [Shiming Xiang](http://www.escience.cn/people/smxiang) and [Chunhong Pan](http://people.ucas.ac.cn/~0005314)     
-[___ACM Multimedia 2018___](http://www.acmmm.org/2018/)
+<br>
+[_ACM Multimedia 2018_](http://www.acmmm.org/2018/)
 
 ## Weakly Supervised Detection (WSD)   
 We use WSDDN ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection model, *i.e.*, the teacher model. Because the released code of WSDDN is implemented using Matlab (based on MatConvNet), we first reproduce this paper using Caffe.
