@@ -81,18 +81,18 @@ The code has been tested successfully on Ubuntu 14.04 with CUDA 8.0.
 
 If our paper [[arXiv]()] is helpful for your research, please consider citing:   
 
-    @inproceedings{liu2018mlickdwsd,   
-      author = {Yongcheng Liu and    
-                Lu Sheng and    
-                Jing Shao and   
-                Junjie Yan and   
-                Shiming Xiang and   
-                Chunhong Pan},   
-      title = {Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection},   
-      booktitle = {ACM International Conference on Multimedia},    
-      pages = {1--9},  
-      year = {2018}   
-    }   
+        @inproceedings{liu2018mlickdwsd,   
+          author = {Yongcheng Liu and    
+                    Lu Sheng and    
+                    Jing Shao and   
+                    Junjie Yan and   
+                    Shiming Xiang and   
+                    Chunhong Pan},   
+          title = {Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection},   
+          booktitle = {ACM International Conference on Multimedia},    
+          pages = {1--9},  
+          year = {2018}   
+        }   
 
 ## Contact
 
