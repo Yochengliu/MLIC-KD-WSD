@@ -27,7 +27,9 @@ __Project Page__: [https://yochengliu.github.io/MLIC-KD-WSD/](https://yochengliu
         ./wsddn/wsddn_train(deploy).prototxt
     
 - [VGG16](http://www.robots.ox.ac.uk/~vgg/research/very_deep/) is used as the backbone model.
+
 - For training, we did not use spatial regularizer. More details can be referred in the paper.
+
 - For testing, you can use Pycaffe or Matcaffe.
 
 ## Multi-Label Image Classification (MLIC)

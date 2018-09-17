@@ -20,9 +20,7 @@ Multi-label image classification (__MLIC__) is a fundamental but challenging tas
 
 - Although the results detected by WSD may not preserve object boundaries well, they tend to ___locate the semantic regions___ which are ___informative for classifying the target object___, such that the predictions can still be improved.
 
-- Therefore, the localization results of WSD could provide ___object-relevant semantic regions___ while its image-level predictions could naturally capture ___the latent class dependencies___.
-
-- These unique advantages are very useful for the MLIC task.
+- Therefore, the localization results of WSD could provide ___object-relevant semantic regions___ while its image-level predictions could naturally capture ___the latent class dependencies___. These unique advantages are very useful for the MLIC task.
 
 # Framework
 
@@ -50,6 +48,7 @@ In this paper, we propose a novel and efficient deep framework to boost MLIC by 
 ![overall_ab]
 
 - The T-WDet model achieves very good performance on MS-COCO while slightly better performance on NUS-WIDE. The reason may be that the clean object labels on MS-COCO are quite suitable for detection task while the noisy concept labels are not.
+
 - After distillation, the MLIC model not only has global information learned by itself, but also perceives the local semantic regions as ___complementary cues___ distilled from the WSD model, thus it could surpass the latter on NUS-WIDE.
 
 ### Region Proposal
@@ -58,6 +57,7 @@ In this paper, we propose a novel and efficient deep framework to boost MLIC by 
 ![proposal]
 
 - The classification performance of T-WDet is improved from 78.6 to 81.1 when using the fully-supervised detection results (__Faster-RCNN__).
+
 - The S-Cls model is improved to 76.3 compared with EdgeBoxes proposals to 74.6, where the gap is not obvious. This further demonstrates the effectiveness and practicability of our proposed framework.
 
 ### Robustness 
@@ -69,6 +69,7 @@ In this paper, we propose a novel and efficient deep framework to boost MLIC by 
 <p align = 'center'><small>The improvements of S-Cls model over each class/concept on MS-COCO (upper figure) and NUS-WIDE (lower figure) after knowledge distillation with our framework. "*k" indicates the number (divided by 1000) of images including this class/concept. The classes/concepts in horizontal axis are sorted by the number "*k" from large to small.</small></p>
 
 - The improvements are also considerable even when the classes are very __imbalanced__ (on NUS-WIDE, the classes in which the number of images is fewer are improved even more).
+
 - The improvements are robust to the ___object's size___ and the ___label's type___. On MS-COCO, small objects like "bottle", "fork", "apple" and so on, which may be difficult for the classification model to pay attention, are also improved a lot. On NUS-WIDE, scenes (e.g., "rainbow"), events (e.g., "earthquake") and objects (e.g., "book") are all improved considerably.
 
 # Code
