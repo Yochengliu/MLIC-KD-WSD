@@ -80,7 +80,7 @@ Please refer to the [GitHub repository](https://github.com/Yochengliu/MLIC-KD-WS
 
 # Publication
 
-Yongcheng Liu, Lu Sheng, Jing Shao, Junjie Yan, Shiming Xiang and Chunhong Pan, "Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection", in ACM International Conference on Multimedia (MM), 2018. [[arXiv]()]
+Yongcheng Liu, Lu Sheng, Jing Shao, Junjie Yan, Shiming Xiang and Chunhong Pan, "Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection", in ACM International Conference on Multimedia (MM), 2018. [[arXiv](https://arxiv.org/abs/1809.05884)]
 
 ```
 @inproceedings{liu2018mlickdwsd,   

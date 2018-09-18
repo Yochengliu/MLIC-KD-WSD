@@ -81,7 +81,7 @@ The code has been tested successfully on Ubuntu 14.04 with CUDA 8.0.
 
 ## Citation
 
-If our paper [[arXiv]()] is helpful for your research, please consider citing:   
+If our paper [[arXiv](https://arxiv.org/abs/1809.05884)] is helpful for your research, please consider citing:   
 
         @inproceedings{liu2018mlickdwsd,   
           author = {Yongcheng Liu and    
