@@ -2,7 +2,7 @@ Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervis
 ===
 This repository contains the code (in [Caffe](https://github.com/BVLC/caffe)) for the paper:
 
-[__Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection__]()
+[__Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection__](https://arxiv.org/abs/1809.05884)
 <br>
 [Yongcheng Liu](mailto:yongcheng.liu@nlpr.ia.ac.cn), [Lu Sheng](http://www.ee.cuhk.edu.hk/~lsheng/), [Jing Shao*](http://www.ee.cuhk.edu.hk/~jshao/), [Junjie Yan](http://www.cbsr.ia.ac.cn/users/jjyan/main.htm), [Shiming Xiang](http://www.escience.cn/people/smxiang) and [Chunhong Pan](http://people.ucas.ac.cn/~0005314)
 <br>
