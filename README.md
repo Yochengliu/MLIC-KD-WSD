@@ -50,7 +50,7 @@ __Project Page__: [https://yochengliu.github.io/MLIC-KD-WSD/](https://yochengliu
 
         ./kd/train_stage2.prototxt
 
-More details can be referred in our paper.
+Datalist preparation is the same as mentioned in WSD. More details can be referred in our paper.
 
 ## Caffe
 
