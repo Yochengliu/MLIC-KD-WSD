@@ -8,7 +8,6 @@
 #include <cfloat>
 
 #include "caffe/fast_rcnn_layers.hpp"
-#include "caffe/half/half.hpp"
 using std::max;
 using std::min;
 

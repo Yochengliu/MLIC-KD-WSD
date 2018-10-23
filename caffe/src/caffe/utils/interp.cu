@@ -1,3 +1,4 @@
+// Copyright 2014 George Papandreou
 
 #include "caffe/common.hpp"
 #include "caffe/common.cuh"
@@ -146,10 +147,10 @@ __global__ void caffe_gpu_interp2_kernel_backward(const int n, const float rheig
       Dtype* pos1 = &data1[channels * ((y1 + h1) * Width1 + (x1 + w1))];
       const Dtype* pos2 = &data2[channels * ((y2 + h2) * Width2 + (x2 + w2))];
       for (int c = 0; c < channels; ++c) {
-	atomicAdd((&pos1[0]), (h0lambda * w0lambda * pos2[0]));
-	atomicAdd((&pos1[channels * w1p]), (h0lambda * w1lambda * pos2[0]));
-	atomicAdd((&pos1[channels * h1p * Width1]), (h1lambda * w0lambda * pos2[0]));
-	atomicAdd((&pos1[channels * (h1p * Width1 + w1p)]), (h1lambda * w1lambda * pos2[0]));
+	atomicAdd(&pos1[0], h0lambda * w0lambda * pos2[0]);
+	atomicAdd(&pos1[channels * w1p], h0lambda * w1lambda * pos2[0]);
+	atomicAdd(&pos1[channels * h1p * Width1], h1lambda * w0lambda * pos2[0]);
+	atomicAdd(&pos1[channels * (h1p * Width1 + w1p)], h1lambda * w1lambda * pos2[0]);
 	pos1++;
 	pos2++;
       }
@@ -158,10 +159,10 @@ __global__ void caffe_gpu_interp2_kernel_backward(const int n, const float rheig
       Dtype* pos1 = &data1[(y1 + h1) * Width1 + (x1 + w1)];
       const Dtype* pos2 = &data2[(y2 + h2) * Width2 + (x2 + w2)];
       for (int c = 0; c < channels; ++c) {
-	atomicAdd((&pos1[0]), (h0lambda * w0lambda * pos2[0]));
-	atomicAdd((&pos1[w1p]), (h0lambda * w1lambda * pos2[0]));
-	atomicAdd((&pos1[h1p * Width1]), (h1lambda * w0lambda * pos2[0]));
-	atomicAdd((&pos1[h1p * Width1 + w1p]), (h1lambda * w1lambda * pos2[0]));
+	atomicAdd(&pos1[0], h0lambda * w0lambda * pos2[0]);
+	atomicAdd(&pos1[w1p], h0lambda * w1lambda * pos2[0]);
+	atomicAdd(&pos1[h1p * Width1], h1lambda * w0lambda * pos2[0]);
+	atomicAdd(&pos1[h1p * Width1 + w1p], h1lambda * w1lambda * pos2[0]);
 	pos1 += Width1 * Height1;
 	pos2 += Width2 * Height2;
       }
@@ -169,127 +170,22 @@ __global__ void caffe_gpu_interp2_kernel_backward(const int n, const float rheig
   }
 }
 
-template <>
-void caffe_gpu_interp2_backward<float,true>(const int channels,
-    float *data1, const int x1, const int y1, const int height1, const int width1, const int Height1, const int Width1,
-    const float *data2, const int x2, const int y2, const int height2, const int width2, const int Height2, const int Width2) {
+template <typename Dtype, bool packed>
+void caffe_gpu_interp2_backward(const int channels,
+    Dtype *data1, const int x1, const int y1, const int height1, const int width1, const int Height1, const int Width1,
+    const Dtype *data2, const int x2, const int y2, const int height2, const int width2, const int Height2, const int Width2) {
   CHECK(x1 >= 0 && y1 >= 0 && height1 > 0 && width1 > 0 && x2 >= 0 && y2 >= 0 && height2 > 0 && width2 > 0);
   CHECK(Width1 >= width1 + x1 && Height1 >= height1 + y1 && Width2 >= width2 + x2 && Height2 >= height2 + y2);
   const float rheight = (height2 > 1) ? static_cast<float>(height1 - 1) / (height2 - 1) : 0.f;
   const float rwidth = (width2 > 1) ? static_cast<float>(width1 - 1) / (width2 - 1) : 0.f;
   const int num_kernels = height2 * width2;
-  caffe_gpu_interp2_kernel_backward<float,true><<<CAFFE_GET_BLOCKS(num_kernels), CAFFE_CUDA_NUM_THREADS>>>
+  caffe_gpu_interp2_kernel_backward<Dtype,packed><<<CAFFE_GET_BLOCKS(num_kernels), CAFFE_CUDA_NUM_THREADS>>>
     (num_kernels, rheight, rwidth, channels,
      data1, x1, y1, height1, width1, Height1, Width1,
      data2, x2, y2, height2, width2, Height2, Width2);
   CUDA_POST_KERNEL_CHECK;
 }
 
-template <>
-void caffe_gpu_interp2_backward<float,false>(const int channels,
-    float *data1, const int x1, const int y1, const int height1, const int width1, const int Height1, const int Width1,
-    const float *data2, const int x2, const int y2, const int height2, const int width2, const int Height2, const int Width2) {
-  CHECK(x1 >= 0 && y1 >= 0 && height1 > 0 && width1 > 0 && x2 >= 0 && y2 >= 0 && height2 > 0 && width2 > 0);
-  CHECK(Width1 >= width1 + x1 && Height1 >= height1 + y1 && Width2 >= width2 + x2 && Height2 >= height2 + y2);
-  const float rheight = (height2 > 1) ? static_cast<float>(height1 - 1) / (height2 - 1) : 0.f;
-  const float rwidth = (width2 > 1) ? static_cast<float>(width1 - 1) / (width2 - 1) : 0.f;
-  const int num_kernels = height2 * width2;
-  caffe_gpu_interp2_kernel_backward<float,false><<<CAFFE_GET_BLOCKS(num_kernels), CAFFE_CUDA_NUM_THREADS>>>
-    (num_kernels, rheight, rwidth, channels,
-     data1, x1, y1, height1, width1, Height1, Width1,
-     data2, x2, y2, height2, width2, Height2, Width2);
-  CUDA_POST_KERNEL_CHECK;
-}
-
-template <>
-void caffe_gpu_interp2_backward<double,true>(const int channels,
-    double *data1, const int x1, const int y1, const int height1, const int width1, const int Height1, const int Width1,
-    const double *data2, const int x2, const int y2, const int height2, const int width2, const int Height2, const int Width2) {
-  CHECK(x1 >= 0 && y1 >= 0 && height1 > 0 && width1 > 0 && x2 >= 0 && y2 >= 0 && height2 > 0 && width2 > 0);
-  CHECK(Width1 >= width1 + x1 && Height1 >= height1 + y1 && Width2 >= width2 + x2 && Height2 >= height2 + y2);
-  const float rheight = (height2 > 1) ? static_cast<float>(height1 - 1) / (height2 - 1) : 0.f;
-  const float rwidth = (width2 > 1) ? static_cast<float>(width1 - 1) / (width2 - 1) : 0.f;
-  const int num_kernels = height2 * width2;
-  caffe_gpu_interp2_kernel_backward<double,true><<<CAFFE_GET_BLOCKS(num_kernels), CAFFE_CUDA_NUM_THREADS>>>
-    (num_kernels, rheight, rwidth, channels,
-     data1, x1, y1, height1, width1, Height1, Width1,
-     data2, x2, y2, height2, width2, Height2, Width2);
-  CUDA_POST_KERNEL_CHECK;
-}
-
-template <>
-void caffe_gpu_interp2_backward<double,false>(const int channels,
-    double *data1, const int x1, const int y1, const int height1, const int width1, const int Height1, const int Width1,
-    const double *data2, const int x2, const int y2, const int height2, const int width2, const int Height2, const int Width2) {
-  CHECK(x1 >= 0 && y1 >= 0 && height1 > 0 && width1 > 0 && x2 >= 0 && y2 >= 0 && height2 > 0 && width2 > 0);
-  CHECK(Width1 >= width1 + x1 && Height1 >= height1 + y1 && Width2 >= width2 + x2 && Height2 >= height2 + y2);
-  const float rheight = (height2 > 1) ? static_cast<float>(height1 - 1) / (height2 - 1) : 0.f;
-  const float rwidth = (width2 > 1) ? static_cast<float>(width1 - 1) / (width2 - 1) : 0.f;
-  const int num_kernels = height2 * width2;
-  caffe_gpu_interp2_kernel_backward<double,false><<<CAFFE_GET_BLOCKS(num_kernels), CAFFE_CUDA_NUM_THREADS>>>
-    (num_kernels, rheight, rwidth, channels,
-     data1, x1, y1, height1, width1, Height1, Width1,
-     data2, x2, y2, height2, width2, Height2, Width2);
-  CUDA_POST_KERNEL_CHECK;
-}
-
-template <>
-void caffe_gpu_interp2_backward<Half,false>(const int channels,
-    Half *data1, const int x1, const int y1, const int height1, const int width1, const int Height1, const int Width1,
-    const Half *data2, const int x2, const int y2, const int height2, const int width2, const int Height2, const int Width2) {
-  CHECK(x1 >= 0 && y1 >= 0 && height1 > 0 && width1 > 0 && x2 >= 0 && y2 >= 0 && height2 > 0 && width2 > 0);
-  CHECK(Width1 >= width1 + x1 && Height1 >= height1 + y1 && Width2 >= width2 + x2 && Height2 >= height2 + y2);
-  const float rheight = (height2 > 1) ? static_cast<float>(height1 - 1) / (height2 - 1) : 0.f;
-  const float rwidth = (width2 > 1) ? static_cast<float>(width1 - 1) / (width2 - 1) : 0.f;
-  const int num_kernels = height2 * width2;
-  float *data1_temp;
-  float *data2_temp;
-  DeviceMemPool& pool = Caffe::Get().cpu_mem_pool();
-  data1_temp = (float*) pool.Allocate(channels * Height1 * Width1 * sizeof(float));
-  data2_temp = (float*) pool.Allocate(channels * Width2 * Width2 * sizeof(float));
-
-  halves2floats_gpu(data1, data1_temp, channels * Height1 * Width1);
-  halves2floats_gpu(data2, data2_temp, channels * Width2 * Width2);
-  caffe_gpu_interp2_kernel_backward<float,false><<<CAFFE_GET_BLOCKS(num_kernels), CAFFE_CUDA_NUM_THREADS>>>
-    (num_kernels, rheight, rwidth, channels,
-     data1_temp, x1, y1, height1, width1, Height1, Width1,
-     data2_temp, x2, y2, height2, width2, Height2, Width2);
-  CUDA_POST_KERNEL_CHECK;
-  floats2halves_gpu(data1_temp, data1, channels * Height1 * Width1);
-  
-  pool.Free((char*)data1_temp);
-  pool.Free((char*)data2_temp);
-  CUDA_POST_KERNEL_CHECK;
-}
-
-template <>
-void caffe_gpu_interp2_backward<Half,true>(const int channels,
-    Half *data1, const int x1, const int y1, const int height1, const int width1, const int Height1, const int Width1,
-    const Half *data2, const int x2, const int y2, const int height2, const int width2, const int Height2, const int Width2) {
-  CHECK(x1 >= 0 && y1 >= 0 && height1 > 0 && width1 > 0 && x2 >= 0 && y2 >= 0 && height2 > 0 && width2 > 0);
-  CHECK(Width1 >= width1 + x1 && Height1 >= height1 + y1 && Width2 >= width2 + x2 && Height2 >= height2 + y2);
-  const float rheight = (height2 > 1) ? static_cast<float>(height1 - 1) / (height2 - 1) : 0.f;
-  const float rwidth = (width2 > 1) ? static_cast<float>(width1 - 1) / (width2 - 1) : 0.f;
-  const int num_kernels = height2 * width2;
-  float *data1_temp;
-  float *data2_temp;
-  DeviceMemPool& pool = Caffe::Get().cpu_mem_pool();
-  data1_temp = (float*) pool.Allocate(channels * Height1 * Width1 * sizeof(float));
-  data2_temp = (float*) pool.Allocate(channels * Height2 * Width2 * sizeof(float));
-
-  halves2floats_gpu(data1, data1_temp, channels * Height1 * Width1);
-  halves2floats_gpu(data2, data2_temp, channels * Height2 * Width2);
-  caffe_gpu_interp2_kernel_backward<float,true><<<CAFFE_GET_BLOCKS(num_kernels), CAFFE_CUDA_NUM_THREADS>>>
-    (num_kernels, rheight, rwidth, channels,
-     data1_temp, x1, y1, height1, width1, Height1, Width1,
-     data2_temp, x2, y2, height2, width2, Height2, Width2);
-  CUDA_POST_KERNEL_CHECK;
-  floats2halves_gpu(data1_temp, data1, channels * Height1 * Width1);
-  pool.Free((char*)data1_temp);
-  pool.Free((char*)data2_temp);
- 
-  CUDA_POST_KERNEL_CHECK;
-}
 
 // Create Gaussian pyramid of an image. Assume output space is pre-allocated.
 // IN : [channels height width]
@@ -360,18 +256,13 @@ template void caffe_gpu_interp2<float,false>(const int, const float *, const int
 template void caffe_gpu_interp2<float,true>(const int, const float *, const int, const int, const int, const int, const int, const int, float *, const int, const int, const int, const int, const int, const int);
 template void caffe_gpu_interp2<double,false>(const int, const double *, const int, const int, const int, const int, const int, const int, double *, const int, const int, const int, const int, const int, const int);
 template void caffe_gpu_interp2<double,true>(const int, const double *, const int, const int, const int, const int, const int, const int, double *, const int, const int, const int, const int, const int, const int);
-template void caffe_gpu_interp2<Half,false>(const int, const Half *, const int, const int, const int, const int, const int, const int, Half *, const int, const int, const int, const int, const int, const int);
-template void caffe_gpu_interp2<Half,true>(const int, const Half *, const int, const int, const int, const int, const int, const int, Half *, const int, const int, const int, const int, const int, const int);
 
 template void caffe_gpu_interp2_backward<float,false>(const int, float *, const int, const int, const int, const int, const int, const int, const float *, const int, const int, const int, const int, const int, const int);
 template void caffe_gpu_interp2_backward<double,false>(const int, double *, const int, const int, const int, const int, const int, const int, const double *, const int, const int, const int, const int, const int, const int);
-template void caffe_gpu_interp2_backward<Half,false>(const int, Half *, const int, const int, const int, const int, const int, const int, const Half *, const int, const int, const int, const int, const int, const int);
 
 template void caffe_gpu_pyramid2<float,false>(const int, const float *, const int, const int, float *, const int);
 template void caffe_gpu_pyramid2<float,true>(const int, const float *, const int, const int, float *, const int);
 template void caffe_gpu_pyramid2<double,false>(const int, const double *, const int, const int, double *, const int);
 template void caffe_gpu_pyramid2<double,true>(const int, const double *, const int, const int, double *, const int);
-template void caffe_gpu_pyramid2<Half,false>(const int, const Half *, const int, const int, Half *, const int);
-template void caffe_gpu_pyramid2<Half,true>(const int, const Half *, const int, const int, Half *, const int);
 
 }  // namespace caffe

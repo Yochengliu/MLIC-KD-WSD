@@ -1,3 +1,4 @@
+// Copyright 2014 George Papandreou
 
 #ifndef CAFFE_UTIL_INTERP_H_
 #define CAFFE_UTIL_INTERP_H_
@@ -43,6 +44,20 @@ template <typename Dtype, bool packed>
 void caffe_gpu_pyramid2(const int channels,
     const Dtype *data, const int height, const int width,
     Dtype *data_pyr, const int levels);
+
+  /*
+template <typename Dtype, bool packed>
+void caffe_cpu_mosaic(const int channels,
+    const Dtype *data1, const MosaicParameter mosaic_params1,
+    const Dtype *data_pyr, const int levels,
+          Dtype *data2, const MosaicParameter mosaic_params2);
+
+template <typename Dtype, bool packed>
+void caffe_gpu_mosaic(const int channels,
+    const Dtype *data1, const MosaicParameter mosaic_params1,
+    const Dtype *data_pyr, const int levels,
+          Dtype *data2, const MosaicParameter mosaic_params2);
+  */
 
 }  // namespace caffe
 
