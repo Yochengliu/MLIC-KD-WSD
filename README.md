@@ -69,6 +69,7 @@ Please follow the instruction of [Caffe](https://github.com/BVLC/caffe).
                     cross_entropy_loss_layer.cpp        // cross entropy loss for WSDDN
                     data_transformer.cpp                // data augmentation
                     human_att_data_layer.cpp            // data layer
+                    interp_layer.cpp                    // bilinear interpolation
                     roi_pooling_layer.cpp/cu            // add score
                     wsd_roigen_layer.cpp                // prepare rois for roi pooling
                     wsd_roigen_single_scale_layer.cpp   // convert rois' coordinates according to the given scale
