@@ -14,11 +14,9 @@
 #include "caffe/data_transformer.hpp"
 #include "caffe/filler.hpp"
 #include "caffe/internal_thread.hpp"
-#include "caffe/internal_thread_array.hpp"
 #include "caffe/layer.hpp"
 #include "caffe/proto/caffe.pb.h"
 #include "caffe/util/db.hpp"
-#include "caffe/util/hdxy_units.hpp"
 #include "caffe/util/blocking_queue.hpp"
 
 namespace caffe {

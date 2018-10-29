@@ -15,7 +15,6 @@
 #include "caffe/util/io.hpp"
 #include "caffe/util/math_functions.hpp"
 #include "caffe/util/rng.hpp"
-#include "caffe/util/mpi_function.hpp"
 
 namespace caffe {
 
@@ -104,7 +103,6 @@ void HumanAttDataLayer<Dtype>::DataLayerSetUp(const vector<Blob<Dtype>*>& bottom
         scale_factors_.push_back(this->layer_param_.human_att_data_param().scale_factors(i));
     }
     const unsigned int scale_rng_seed = caffe_rng_rand();
-    caffe_mpi_bcast<int>((void*)&scale_rng_seed, 1, MPI_INT);
     scale_rng_.reset(new Caffe::RNG(scale_rng_seed));
   }
   
