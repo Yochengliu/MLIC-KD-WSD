@@ -13,6 +13,27 @@
 
 namespace caffe {
 
+template <typename Dtype>
+void DataTransformer<Dtype>::InitRand() {
+  const bool needs_rand = param_.mirror() ||
+      (phase_ == TRAIN && param_.crop_size());
+  if (needs_rand) {
+    const unsigned int rng_seed = caffe_rng_rand();
+    rng_.reset(new Caffe::RNG(rng_seed));
+  } else {
+    rng_.reset();
+  }
+}
+
+template <typename Dtype>
+int DataTransformer<Dtype>::Rand(int n) {
+  CHECK(rng_);
+  CHECK_GT(n, 0);
+  caffe::rng_t* rng =
+      static_cast<caffe::rng_t*>(rng_->generator());
+  return ((*rng)() % n);
+}
+
 template<typename Dtype>
 void DataTransformer<Dtype>::TransformDataLabel(const cv::Mat& cv_img,
                                        Blob<Dtype>* transformed_blob,
@@ -24,7 +45,6 @@ void DataTransformer<Dtype>::TransformDataLabel(const cv::Mat& cv_img,
   const int img_channels = cv_img.channels();
   const int img_height = cv_img.rows;
   const int img_width = cv_img.cols;
-  const bool is_random_sized_crop = param_.random_sized_crop();
   int label_dim = att_num + bbox_num * 5;
 
   // Check dimensions.
@@ -34,10 +54,6 @@ void DataTransformer<Dtype>::TransformDataLabel(const cv::Mat& cv_img,
   const int num = transformed_blob->num();
 
   CHECK_EQ(channels, img_channels);
-  if (!is_random_sized_crop) {
-    CHECK_LE(height, img_height);
-    CHECK_LE(width, img_width);
-  }
   CHECK_GE(num, 1);
 
   CHECK(cv_img.depth() == CV_8U) << "Image data type must be unsigned byte";
@@ -48,10 +64,6 @@ void DataTransformer<Dtype>::TransformDataLabel(const cv::Mat& cv_img,
   const bool has_mean_values = mean_values_.size() > 0;
 
   CHECK_GT(img_channels, 0);
-  if (!is_random_sized_crop) {
-    CHECK_GE(img_height, crop_size);
-    CHECK_GE(img_width, crop_size);
-  }
 
   Dtype* mean = NULL;
   if (has_mean_file) {

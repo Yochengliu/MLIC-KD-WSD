@@ -15,6 +15,8 @@ class DataTransformer {
   explicit DataTransformer(const TransformationParameter& param, Phase phase);
   virtual ~DataTransformer() {}
   
+  void InitRand();
+  
   void TransformDataLabel(const cv::Mat& cv_img,
                                        Blob<Dtype>* transformed_blob,
                                        int item_id,
@@ -23,6 +25,9 @@ class DataTransformer {
                                        Dtype* prefetch_label);
 
  protected:
+ 
+  virtual int Rand(int n);
+ 
   // Tranformation parameters
   TransformationParameter param_;
 
