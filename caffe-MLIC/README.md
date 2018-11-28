@@ -2,7 +2,7 @@
 
 #### Installation
 
-Please refer to [Caffe document](http://caffe.berkeleyvision.org/installation.html) for instruction.   
+Please refer to [Caffe document](http://caffe.berkeleyvision.org/installation.html) for instructions.   
 
 #### Implementation details
         ./caffe
