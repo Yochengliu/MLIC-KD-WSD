@@ -78,7 +78,7 @@ Please refer to caffe-MLIC for details.
 
 ## Citation
 
-If our paper [[arXiv](https://arxiv.org/abs/1809.05884)] is helpful for your research, please consider citing:   
+If our paper [[ACM DL](https://dl.acm.org/citation.cfm?id=3240567)] [[arXiv](https://arxiv.org/abs/1809.05884)] is helpful for your research, please consider citing:   
 
         @inproceedings{liu2018mlickdwsd,   
           author = {Yongcheng Liu and    
@@ -89,7 +89,7 @@ If our paper [[arXiv](https://arxiv.org/abs/1809.05884)] is helpful for your res
                     Chunhong Pan},   
           title = {Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection},   
           booktitle = {ACM International Conference on Multimedia},    
-          pages = {1--9},  
+          pages = {700--708},  
           year = {2018}   
         }   
 
