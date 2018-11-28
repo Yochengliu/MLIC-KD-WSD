@@ -1,5 +1,9 @@
 ## This is the caffe in which our implementation for MLIC-KD-WSD is merged.  
 
+#### Installation
+
+Please refer to [Caffe document](http://caffe.berkeleyvision.org/installation.html) for instruction.   
+
 #### Implementation details
         ./caffe
             include

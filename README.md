@@ -18,6 +18,20 @@ __Project Page__: [https://yochengliu.github.io/MLIC-KD-WSD/](https://yochengliu
 
 [1]. Hakan Bilen, Andrea Vedaldi, "Weakly Supervised Deep Detection Networks". In: IEEE Computer Vision and Pattern Recognition, 2016.
 
+#### Reproduction results
+
+**_detection_**
+[wsddn_det]: ./docs/images/wsddn_det.jpg
+![wsddn_det]
+
+- __Paper__ training: 5 scales + mirror          testing: fusion of 5 scales + mirror
+
+- __Our__   training: 5 scales + mirror          testing: single-forward test
+
+**_classification_**
+[wsddn_cls]: ./docs/images/wsddn_cls.jpg
+![wsddn_cls]
+
 #### Datalist Preparation
 
     image_path one_hot_label_vector(e.g., 0 1 1 ...) proposal_info(e.g., x_min y_min x_max y_max score x_min y_min x_max y_max score ...)
@@ -54,9 +68,7 @@ Datalist preparation is the same as mentioned in WSD. More details can be referr
 
 ## Implementation
 
-#### Please refer to caffe-MLIC for details
-
-        ./caffe-MLIC
+Please refer to caffe-MLIC for details.
 
 ## Citation
 
