@@ -1,3 +1,30 @@
+## This is the caffe in which our implementation for MLIC-KD-WSD is merged.  
+
+#### Implementation details
+        ./caffe
+            include
+                ...
+            src
+                caffe
+                    layers
+                        cross_entropy_loss_layer.cpp        // cross entropy loss for WSDDN
+                        human_att_data_layer.cpp            // data layer
+                        interp_layer.cpp                    // bilinear interpolation
+                        roi_pooling_layer.cpp/cu            // add score
+                        wsd_roigen_layer.cpp                // prepare rois for roi pooling
+                        wsd_roigen_single_scale_layer.cpp   // convert rois' coordinates according to the given scale
+                    proto
+                        caffe.proto (line 407-471)          // add some LayerParameters 
+                    utils
+                        interp.cpp/cu                       // bilinear interpolation
+                    data_transformer.cpp (line 41-160)      // data augmentation  
+
+The code has been tested successfully on Ubuntu 14.04 with CUDA 8.0, cuDNN 5.1 and OpenCV 3.1.0.  
+    
+
+------------------------------------------------------------------------------------------------------    
+
+    
 # Caffe
 
 [![Build Status](https://travis-ci.org/BVLC/caffe.svg?branch=master)](https://travis-ci.org/BVLC/caffe)

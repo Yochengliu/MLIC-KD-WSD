@@ -52,33 +52,11 @@ __Project Page__: [https://yochengliu.github.io/MLIC-KD-WSD/](https://yochengliu
 
 Datalist preparation is the same as mentioned in WSD. More details can be referred in our paper.
 
-## Caffe
+## Implementation
 
-#### Installation
+#### Please refer to caffe-MLIC for details
 
-Please follow the instruction of [Caffe](https://github.com/BVLC/caffe).
-
-#### Implementation
-        ./caffe
-            include
-                ...
-            src
-                caffe
-                    utils
-                        interp.cpp/cu                   // bilinear interpolation
-                    cross_entropy_loss_layer.cpp        // cross entropy loss for WSDDN
-                    data_transformer.cpp                // data augmentation
-                    human_att_data_layer.cpp            // data layer
-                    interp_layer.cpp                    // bilinear interpolation
-                    roi_pooling_layer.cpp/cu            // add score
-                    wsd_roigen_layer.cpp                // prepare rois for roi pooling
-                    wsd_roigen_single_scale_layer.cpp   // convert rois' coordinates according to the given scale
-                proto
-                    caffe.proto                         // add some LayerParameters 
-
-__Note__: You shoud add the above codes to Caffe and compile them successfully.
-
-The code has been tested successfully on Ubuntu 14.04 with CUDA 8.0.    
+        ./caffe-MLIC
 
 ## Citation
 
