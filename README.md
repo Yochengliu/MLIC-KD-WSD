@@ -20,15 +20,21 @@ __Project Page__: [https://yochengliu.github.io/MLIC-KD-WSD/](https://yochengliu
 
 #### Reproduction results
 
-**_detection_**
+**_detection_**  
+
 [wsddn_det]: ./docs/images/wsddn_det.jpg
 ![wsddn_det]
 
-- __Paper__ training: 5 scales + mirror          testing: fusion of 5 scales + mirror
+- __Paper__ 
 
-- __Our__   training: 5 scales + mirror          testing: single-forward test
+        training: 5 scales + mirror          testing: fusion of 5 scales + mirror
+
+- __Our__   
+
+        training: 5 scales + mirror          testing: single-forward test
 
 **_classification_**
+
 [wsddn_cls]: ./docs/images/wsddn_cls.jpg
 ![wsddn_cls]
 
