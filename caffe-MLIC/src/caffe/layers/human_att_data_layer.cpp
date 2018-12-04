@@ -321,7 +321,7 @@ void HumanAttDataLayer<Dtype>::InternalThreadEntry() {
 }
 
 template <typename Dtype>
-std::vector<std::string> HumanAttDataLayer<Dtype>::StrSplit(std::string &str, std::string sep = ",")
+std::vector<std::string> HumanAttDataLayer<Dtype>::StrSplit(std::string &str, std::string sep)
 {
   vector<std::string> ret_;
   if (str.empty())
