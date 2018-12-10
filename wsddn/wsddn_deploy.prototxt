@@ -399,8 +399,8 @@ layer {
     pooled_h: 7
     pooled_w: 7
     spatial_scale: 0.0625
-    score_scale: 10
-    score_bias: 1
+    score_scale: 1
+    score_bias: 0
   }
 }
 
