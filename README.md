@@ -2,17 +2,17 @@ Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervis
 ===
 This repository contains the code (in [Caffe](https://github.com/BVLC/caffe)) for the paper:
 
-[__Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection__](https://arxiv.org/abs/1809.05884)
+Multi-Label Image Classification via Knowledge Distillation from Weakly-Supervised Detection [[ACM DL](https://dl.acm.org/citation.cfm?id=3240567)] [[arXiv](https://arxiv.org/abs/1809.05884)]
 <br>
 [Yongcheng Liu](https://www.researchgate.net/profile/Yongcheng_Liu), [Lu Sheng](https://lucassheng.github.io/), [Jing Shao*](https://amandajshao.github.io/), [Junjie Yan](http://www.cbsr.ia.ac.cn/users/jjyan/main.htm), [Shiming Xiang](https://scholar.google.com/citations?user=0ggsACEAAAAJ&hl=zh-CN) and [Chunhong Pan](http://people.ucas.ac.cn/~0005314)
 <br>
-[_ACM Multimedia 2018_](http://www.acmmm.org/2018/)
+[__ACM Multimedia 2018__](http://www.acmmm.org/2018/)
 
 __Project Page__: [https://yochengliu.github.io/MLIC-KD-WSD/](https://yochengliu.github.io/MLIC-KD-WSD/)
 
 ## Weakly Supervised Detection (WSD)
  
-- We use [WSDDN](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Bilen_Weakly_Supervised_Deep_CVPR_2016_paper.pdf) ![](http://latex.codecogs.com/gif.latex?^{[1]}) as the detection model, *i.e.*, the teacher model. 
+- We use WSDDN<sup>1</sup> as the detection model, *i.e.*, the teacher model. 
 
 - Because the [released code](https://github.com/hbilen/WSDDN) of WSDDN is implemented using Matlab (based on [MatConvNet](http://www.vlfeat.org/matconvnet/)), we first reproduce this paper using Caffe.
 
@@ -78,7 +78,7 @@ Please refer to caffe-MLIC for details.
 
 ## Citation
 
-If our paper [[ACM DL](https://dl.acm.org/citation.cfm?id=3240567)] [[arXiv](https://arxiv.org/abs/1809.05884)] is helpful for your research, please consider citing:   
+If our paper is helpful for your research, please consider citing:   
 
         @inproceedings{liu2018mlickdwsd,   
           author = {Yongcheng Liu and    
